@@ -4,22 +4,16 @@ FROM ubuntu:18.04
 RUN echo ========== Install dependencies ========== \
   && apt-get update && apt-get install -y \
     clang \
+    gdb \
     git \
+    libavahi-compat-libdnssd-dev \
+    libssl-dev \
     make \
+    openssh-server \
     perl \
-    python3-pip \
     unzip \
     wget \
-    libasound2-dev \
-    libavahi-compat-libdnssd-dev \
-    libfaac-dev \
-    libopus-dev \
-    libsqlite3-dev \
-    libssl-dev
-
-RUN apt-get install -y gdb
-
-RUN echo ========== Cleanup ========== \
+  && apt-get clean \
   && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /build
